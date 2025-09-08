@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>IITK Donation Dashboard - Class of 1986</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600&family=Roboto&display=swap"
+        rel="stylesheet" />
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f6f8;
+        }
+
+        h2,
+        h3,
+        h5 {
+            font-family: 'Raleway', sans-serif;
+            color: #0E2F44;
+        }
+
+        .navbar {
+            background-color: #0E2F44 !important;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+            transition: 0.3s ease-in-out;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .counter {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0E777E;
+        }
+
+        .btn-primary-custom {
+            background-color: #B04B34;
+            border-radius: 50px;
+            padding: 10px 24px;
+            font-weight: 600;
+        }
+
+        .btn-primary-custom:hover {
+            background-color: #922f28;
+        }
+
+        canvas {
+            max-height: 360px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <!-- <header id="header" class="header d-flex align-items-center fixed-top">
+        <div
+            class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+            <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+
+
+                <h1 class="sitename">Reunion | Class of 1986</h1>
+            </a>
+
+            <nav id="navmenu" class="navmenu">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="#why-us">About</a></li>
+                    <li><a href="#Highlights">Highlights</a></li>
+                    <li><a href="#impact-stats">Impact</a></li>
+                    <li><a href="#testimonials-home">Batch Representative</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <div class="hero-buttons">
+                        <a href="https://almaworld.iitk.ac.in/reunion/RjSK/40th-Reunion-Class-of-1986/" class="btn me-3"
+                            style="background-color: #B04B34; color: #fff; border: none; padding: 10px 14px; font-weight: 600; border-radius: 6px;"
+                            target="_blank">
+                            Register Now
+                        </a>
+                    </div>
+                </ul>
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            </nav>
+
+
+
+        </div>
+    </header> -->
+ <!-- Travel Hero Section -->
+ <section id="travel-hero" class="travel-hero section dark-background">
+
+    <div class="hero-background">
+        <img src="assets/img/IIT Gate.jpg" alt="Hero Image" class="h-100 w-100">
+        <div class="hero-overlay"></div>
+    
+      
+      <div class="hero-overlay"></div>
+    </div>
+
+    
+
+  </section><!-- /Travel Hero Section -->
+
+    <!-- Fundraising Impact -->
+    <section class="py-5" id="impact">
+        <div class="container text-center">
+            <h2 class="mb-4">Fundraising Impact</h2>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="counter" data-target="140000000">₹0</div>
+                        <p class="mb-0">Total Pledged</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="counter" data-target="30000000">₹0</div>
+                        <p class="mb-0">Total Donations</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="counter" data-target="450">0</div>
+                        <p class="mb-0">Total Donors</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="counter" data-target="600">0</div>
+                        <p class="mb-0">Total Pledges</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Charts Section -->
+    <section class="py-5" id="charts">
+        <div class="container">
+            <h2 class="text-center mb-5">Contribution Break up</h2>
+            
+
+            <div class="row mb-5">
+                <div class="col-md-6 mb-4 text-center">
+                    <h5>Hall-wise Pledge</h5>
+                    <canvas id="hallPledgesPie"></canvas>
+                </div>
+                <div class="col-md-6 mb-4 text-center">
+                    <h5>Hall-wise Donations</h5>
+                    <canvas id="hallDonationsPie"></canvas>
+                </div>
+            </div>
+           
+            <div class="row">
+                <!-- Donations Chart -->
+                <div class="col-md-6 mb-4 text-center">
+                  <h5>Department-wise Donations</h5>
+                  <canvas id="deptBarChart"></canvas>
+                </div>
+              
+                <!-- Pledges Chart -->
+                <div class="col-md-6 mb-4 text-center">
+                  <h5>Department-wise Pledge</h5>
+                  <canvas id="deptPledgeBarChart"></canvas>
+                </div>
+              </div>
+              
+        </div>
+    </section>
+
+    <!-- JS Section -->
+    <script>
+        // Animated Counters
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll(".counter").forEach(counter => {
+                const target = +counter.getAttribute("data-target");
+                const update = () => {
+                    let current = +counter.innerText.replace(/[₹,]/g, "");
+                    let increment = target / 150;
+                    if (current < target) {
+                        current += increment;
+                        counter.innerText = target >= 1000 ? "₹" + Math.ceil(current).toLocaleString("en-IN") : Math.ceil(current);
+                        setTimeout(update, 10);
+                    } else {
+                        counter.innerText = target >= 1000 ? "₹" + target.toLocaleString("en-IN") : target;
+                    }
+                };
+                update();
+            });
+        });
+
+        const hallLabels = ["Hall 1", "Hall 2", "Hall 3", "Hall 4", "Hall 5", "Hall 6", "Hall 7", "Hall 8", "Hall 9", "Hall 10", "Hall 11", "Hall 12", "GH1", "GH2", "Hall 13"];
+        const deptLabels = ["CSE", "EE", "ME", "CE", "CHE", "AE", "MSE", "BSBE", "Maths", "Physics", "Chemistry", "Earth Sciences", "ECO", "Psychology", "Design", "IM", "HSS", "Photonics", "Materials"];
+
+        const hallPledges = [10, 12, 9, 14, 8, 7, 6, 5, 10, 9, 4, 11, 6, 5, 7].map(x => x * 100000);
+        const hallDonations = [8, 11, 7, 12, 6, 5, 5, 4, 9, 8, 3, 10, 5, 4, 6].map(x => x * 100000);
+        const deptPledges = deptLabels.map((_, i) => (5 + (i % 4)) * 100000);
+        const deptDonations = deptLabels.map((_, i) => (4 + (i % 5)) * 100000);
+
+        const professionalColors = [
+            "#0E2F44", "#B04B34", "#657889", "#A09E9E", "#C9CBA3",
+            "#7895B2", "#889696", "#D7C9AA", "#A67B5B", "#E1D89F",
+            "#9EADC8", "#5E738A", "#D1BFA7", "#587B7F", "#A3A899",
+            "#7A8B99", "#B8C6C8", "#DEE0D5", "#CAD2C5"
+        ];
+
+        const chartOptions = (isPie = true) => ({
+            plugins: {
+                legend: { position: 'bottom', labels: { color: "#333" } },
+                tooltip: {
+                    callbacks: {
+                        label: ctx => `${ctx.label}: ₹${ctx.parsed.toLocaleString('en-IN')}`
+                    }
+                }
+            },
+            ...(isPie ? {} : {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { color: "#333" }
+                    },
+                    x: {
+                        ticks: {
+                            color: "#333",
+                            autoSkip: false,
+                            maxRotation: 90,
+                            minRotation: 45
+                        }
+                    }
+                },
+                plugins: {
+                    legend: { display: false }
+                }
+            })
+        });
+
+        new Chart(document.getElementById("hallPledgesPie"), {
+            type: 'pie',
+            data: {
+                labels: hallLabels,
+                datasets: [{
+                    data: hallPledges,
+                    backgroundColor: professionalColors
+                }]
+            },
+            options: chartOptions()
+        });
+
+        new Chart(document.getElementById("hallDonationsPie"), {
+            type: 'pie',
+            data: {
+                labels: hallLabels,
+                datasets: [{
+                    data: hallDonations,
+                    backgroundColor: professionalColors.slice().reverse()
+                }]
+            },
+            options: chartOptions()
+        });
+
+        new Chart(document.getElementById("deptBarChart"), {
+            type: 'bar',
+            data: {
+                labels: deptLabels,
+                datasets: [{
+                    data: deptDonations,
+                    label: 'Donations (₹)',
+                    backgroundColor: professionalColors
+                }]
+            },
+            options: chartOptions(false)
+        });
+
+        new Chart(document.getElementById("deptPledgeBarChart"), {
+  type: 'bar',
+  data: {
+    labels: deptLabels,
+    datasets: [{
+      data: deptPledges,
+      label: 'Pledges (₹)',
+      backgroundColor: professionalColors
+    }]
+  },
+  options: chartOptions(false)
+});
+
+    </script>
+    <footer id="footer" class="footer position-relative dark-background">
+
+        <div class="container footer-top">
+            <div class="row gy-4">
+                <div class="col-lg-4 col-md-6 footer-about">
+                    <a href="index.html" class="d-flex align-items-center">
+                        <span class="sitename">IITK DoRA</span>
+                    </a>
+                    <div class="footer-contact pt-3">
+                        <p>Office of Dean of Resources & Alumni</p>
+                        <p>Indian Institute of Technology Kanpur</p>
+                        <p>Kanpur - 208016, Uttar Pradesh, India</p>
+                        <p class="mt-3"><strong>Phone:</strong> <span>+91 512 259 7225</span></p>
+                        <p><strong>Email:</strong> <span>alumni@iitk.ac.in</span></p>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 footer-links">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="#">About DoRA</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="#">Alumni Connect</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="#">Give Back</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-md-3 footer-links">
+                    <h4>Initiatives</h4>
+                    <ul>
+                        <li><i class="bi bi-chevron-right"></i> <a href="#">Class Reunions</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="#">Mentorship</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="#">Planned Giving</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="#">Student Support</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-12">
+                    <h4>Follow Us</h4>
+                    <p>Stay connected with us through our social platforms and be part of the IITK alumni community.</p>
+                    <div class="social-links d-flex">
+                        <a href="https://twitter.com/IITKanpur"><i class="bi bi-twitter-x"></i></a>
+                        <a href="https://www.facebook.com/IITKanpur"><i class="bi bi-facebook"></i></a>
+                        <a href="https://www.instagram.com/iitkanpur"><i class="bi bi-instagram"></i></a>
+                        <a href="https://www.linkedin.com/school/iit-kanpur"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container copyright text-center mt-4">
+            <p>© <span>Copyright</span> <strong class="px-1 sitename">IIT Kanpur - DoRA Office</strong> <span>All Rights
+                    Reserved</span></p>
+
+        </div>
+
+    </footer>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
