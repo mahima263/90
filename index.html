@@ -52,7 +52,7 @@
           <li><a href="#why-us">About</a></li>
           <li><a href="#Representative">Batch Representative</a></li>
           <!-- <li><a href="gallery.html">Gallery</a></li> -->
-          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="faq.html">FAQs</a></li>
           <li><a href="#call-to-action">Contact</a></li>
           <div class="hero-buttons">
             <a href="https://almaworld.iitk.ac.in/reunion/KJjPK/35th-Reunion-Class-of-1990/" class="btn me-3"
@@ -113,7 +113,7 @@
           <!-- Right Image -->
           <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
             <div class="about-image" style="position: relative;">
-              <img src="PICT0051 (1).JPG" alt="Travel Experience" class="img-fluid rounded-4 retro-effect">
+              <img src="Untitled-1_1.jpg" alt="Travel Experience" class="img-fluid rounded-4 retro-effect">
 
             </div>
 
@@ -189,32 +189,35 @@
 
     <script>
       const targetDate = new Date("February 13, 2026 00:00:00").getTime();
-
+    
       function updateCountdown() {
         const now = new Date().getTime();
         const distance = targetDate - now;
-
+    
         if (distance <= 0) {
-          document.getElementById("countdown").style.display = "none";
-          document.getElementById("message").innerHTML = "🎉 Welcome! The Reunion has started 🎉";
+          document.getElementById("days").textContent = "0";
+          document.getElementById("hours").textContent = "0";
+          document.getElementById("minutes").textContent = "0";
+          document.getElementById("seconds").textContent = "0";
+          clearInterval(timer); // timer ko stop kar dega
           return;
         }
-
+    
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
+    
         document.getElementById("days").textContent = days;
         document.getElementById("hours").textContent = hours;
         document.getElementById("minutes").textContent = minutes;
         document.getElementById("seconds").textContent = seconds;
       }
-
+    
       updateCountdown();
-      setInterval(updateCountdown, 1000);
+      const timer = setInterval(updateCountdown, 1000);
     </script>
-
+    
     <!------------End Rsvp content-->
     <!-- Featured Destinations Section -->
     <section id="featured-destinations" class="featured-destinations section">
@@ -538,7 +541,7 @@
           <div class="initiative-box">CNR Rao Faculty Award</div>
 
           <div class="initiative-box">Sajani Kumar Roy Memorial Chair</div>
-          <div class="initiative-box">V Srinivasan Memorial Scholarship (Estd. In 2025)</div>
+          <div class="initiative-box">V Srinivasan Memorial Scholarship<br/> (Estd. In 2025)</div>
           
         </div>
       </div>
